@@ -1,0 +1,13 @@
+name: CI
+
+on: [push, pull_request]
+jobs:
+    ubuntu-gcc-build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: build
+              run: | 
+                cmake -S . -B build \
+                -D CMAKE_BUILD_TYPE=RELEASE
+                cmake --build build
