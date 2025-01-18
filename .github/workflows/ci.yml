@@ -1,8 +1,8 @@
 name: CI
+on: [pull_request]
 
-on: [push, pull_request]
 jobs:
-    ubuntu-gcc-build:
+    ubuntu-build:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -11,3 +11,22 @@ jobs:
                 cmake -S . -B build \
                 -D CMAKE_BUILD_TYPE=RELEASE
                 cmake --build build
+    macos-build:
+        runs-on: macOS-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: build
+              run: | 
+                cmake -S . -B build \
+                -D CMAKE_BUILD_TYPE=RELEASE
+                cmake --build build
+    windows-build:
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: build
+              run: | 
+                cmake -S . -B build \
+                -D CMAKE_BUILD_TYPE=RELEASE
+                cmake --build build
+    
