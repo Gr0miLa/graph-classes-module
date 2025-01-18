@@ -1,16 +1,15 @@
 #pragma once
 
 #include "Graph.hpp"
-#include "GeneralizedPetersenGraph.hpp"
-#include "DoubleGeneralizedPetersenGraph.hpp"
 #include <algorithm>
 #include <set>
 #include <map>
 #include <stack>
 #include <queue>
+#include <limits>
 
 namespace alg {
-    // Раскраска графа
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     std::vector<size_t> colorGraph(const Graph& graph) {
         size_t V = graph.getNumberOfVertices();
         std::vector<int> listVertex;
@@ -52,7 +51,7 @@ namespace alg {
         return result;
     }
 
-    // Поиск хроматического числа
+    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     size_t chromaticNumber(std::vector<size_t> colors) {
         std::sort(colors.begin(), colors.end());
 
@@ -66,7 +65,7 @@ namespace alg {
         return count;
     }
 
-    // Алгоритм обхода графа в глубину (DFS)
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (DFS)
     std::vector<size_t> dfs(const Graph& graph, size_t startVertex) {
         std::vector<size_t> result;
         std::vector<bool> visited(graph.getNumberOfVertices(), false);
@@ -93,7 +92,7 @@ namespace alg {
         return result;
     }
 
-    // Алгоритм обхода графа в ширину (BFS)
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (BFS)
     std::vector<size_t> bfs(const Graph& graph, size_t startVertex) {
         std::vector<size_t> result;
         std::vector<bool> visited(graph.getNumberOfVertices(), false);
@@ -118,7 +117,7 @@ namespace alg {
         return result;
     }
 
-    // Алгоритм Брона Кербоша
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     void bronKerbosch(const Graph& graph, std::vector<size_t>& R, std::set<size_t>& P, 
         std::set<size_t>& X, std::vector<std::vector<size_t>>& cliques) {
         if (P.empty() && X.empty()) {
@@ -148,7 +147,7 @@ namespace alg {
         }
     }
 
-    // Поиск клик
+    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     std::vector<std::vector<size_t>> findMaximalCliques(const Graph& graph) {
         std::vector<std::vector<size_t>> cliques;
         std::vector<size_t> R;
@@ -163,12 +162,12 @@ namespace alg {
         return cliques;
     }
 
-    // Алгоритм Дейкстры
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     std::vector<size_t> dijkstra(const Graph& graph, size_t startVertex) {
         size_t numVertices = graph.getNumberOfVertices();
         std::vector<size_t> distances(numVertices, std::numeric_limits<size_t>::max());
         std::vector<bool> visited(numVertices, false);
-        using Pair = std::pair<size_t, size_t>; // расстояние, вершина
+        using Pair = std::pair<size_t, size_t>; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         std::priority_queue<Pair, std::vector<Pair>, std::greater<>> priorityQueue;
 
         distances[startVertex] = 0;
@@ -185,7 +184,7 @@ namespace alg {
             visited[currentVertex] = true;
 
             for (size_t neighbor : graph.getAdjVertices(currentVertex)) {
-                size_t edgeWeight = 1; // По умолчанию вес ребра равен 1
+                size_t edgeWeight = 1; // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 1
                 size_t newDistance = currentDistance + edgeWeight;
 
                 if (newDistance < distances[neighbor]) {

@@ -1,6 +1,6 @@
 #include "BinaryTreeGraph.hpp"
 
-// Конструктор для создания графа бинарного дерева
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 BinaryTreeGraph::BinaryTreeGraph(size_t vertices, 
     Graph::RepresentationType repType, Graph::GraphType graphType)
     : graph(vertices, repType, graphType) {
@@ -10,7 +10,7 @@ BinaryTreeGraph::BinaryTreeGraph(size_t vertices,
     buildBinaryTree(0, vertices);
 }
 
-// Метод для построения бинарного дерева
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 void BinaryTreeGraph::buildBinaryTree(size_t current, size_t maxVertices) {
     size_t leftChild = 2 * current + 1;
     size_t rightChild = 2 * current + 2;
@@ -26,17 +26,17 @@ void BinaryTreeGraph::buildBinaryTree(size_t current, size_t maxVertices) {
     }
 }
 
-// Получение базового графа
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 const Graph& BinaryTreeGraph::getGraph() const {
     return graph;
 }
 
-// Вывод цикла на консоль
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void BinaryTreeGraph::printGraph() const {
     graph.printGraph();
 }
 
-// Получение обозначения графа
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 std::string BinaryTreeGraph::getName() const {
     return "2-Tree(" + std::to_string(graph.getNumberOfVertices()) + ")";
 }
